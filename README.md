@@ -1,6 +1,7 @@
 # 🫀 Cardiovascular Disease Prediction System
 
 A comprehensive machine learning project for cardiovascular disease prediction featuring:
+
 - **Complete ML Pipeline**: Data analysis, model training, and evaluation with 4 algorithms
 - **Interactive Gradio Interface**: Real-time web application for risk assessment
 - **Multiple Model Comparison**: Logistic Regression, Random Forest, SVM, and Gradient Boosting
@@ -10,12 +11,14 @@ A comprehensive machine learning project for cardiovascular disease prediction f
 ## 🌟 Features
 
 ### 🤖 Machine Learning Pipeline
+
 - **4 Trained Models**: Logistic Regression (87% F1), Random Forest (88% AUC), SVM, Gradient Boosting
 - **Comprehensive Analysis**: EDA, feature correlation, model comparison in Jupyter notebook
 - **Hyperparameter Tuning**: Optimized Logistic Regression with GridSearchCV
 - **Performance Metrics**: Accuracy, ROC-AUC, F1-score, and confusion matrices
 
 ### 🌐 Interactive Web Interface
+
 - **Real-time Predictions**: Instant risk assessment via Gradio web app
 - **Multi-model Consensus**: Combines predictions from all 4 algorithms
 - **Visual Analytics**: Interactive charts and confidence visualizations
@@ -23,6 +26,7 @@ A comprehensive machine learning project for cardiovascular disease prediction f
 - **Medical Context**: Educational disclaimers and healthcare recommendations
 
 ### 📊 Data Analysis
+
 - **Exploratory Data Analysis**: Comprehensive visualization of cardiovascular indicators
 - **Feature Engineering**: Analysis of age, cholesterol, blood pressure, heart rate patterns
 - **Statistical Insights**: Correlation matrices and distribution analysis
@@ -32,12 +36,14 @@ A comprehensive machine learning project for cardiovascular disease prediction f
 ### 🌐 Launch Web Interface
 
 1. **Create local directory and files:**
+
 ```powershell
 mkdir cardio_interface
 cd cardio_interface
 ```
 
 2. **Install dependencies:**
+
 ```bash
 pip install gradio pandas numpy scikit-learn matplotlib seaborn
 ```
@@ -45,7 +51,7 @@ pip install gradio pandas numpy scikit-learn matplotlib seaborn
 3. **Download and run the interface:**
    - Copy `gradio_interface.py` to your local directory
    - Run: `python gradio_interface.py`
-   - Open: http://localhost:7860
+   - Open: [http://localhost:7860](http://localhost:7860)
 
 ### 📊 Analyze Original Data
 
@@ -57,11 +63,13 @@ pip install gradio pandas numpy scikit-learn matplotlib seaborn
 The interface accepts the following health parameters:
 
 ### Personal Information
+
 - **Age**: Patient age (1-100 years)
 - **Sex**: Gender (0: Female, 1: Male)
 
 ### Heart-Related Symptoms
-- **Chest Pain Type**: 
+
+- **Chest Pain Type**:
   - 0: Typical Angina
   - 1: Atypical Angina
   - 2: Non-anginal Pain
@@ -69,11 +77,13 @@ The interface accepts the following health parameters:
 - **Exercise Induced Angina**: (0: No, 1: Yes)
 
 ### Clinical Measurements
+
 - **Resting Blood Pressure**: mm Hg (80-250)
 - **Cholesterol Level**: mg/dl (100-600)
 - **Maximum Heart Rate**: Achieved during exercise (50-250)
 
 ### Lab Results
+
 - **Fasting Blood Sugar**: > 120 mg/dl (0: No, 1: Yes)
 - **Resting ECG Results**:
   - 0: Normal
@@ -81,6 +91,7 @@ The interface accepts the following health parameters:
   - 2: Left Ventricular Hypertrophy
 
 ### Additional Parameters
+
 - **ST Depression**: Induced by exercise (0.0-10.0)
 - **Slope**: Of peak exercise ST segment
   - 0: Upsloping
@@ -96,22 +107,27 @@ The interface accepts the following health parameters:
 ## 🖥️ Using the Web Interface
 
 ### 🎛️ Input Parameters
+
 The interface provides intuitive controls for:
 
 **👤 Personal Information**
+
 - Age slider (1-100 years)
 - Sex selection (Male/Female)
 
-**💓 Cardiovascular Symptoms** 
+**💓 Cardiovascular Symptoms**
+
 - Chest pain type (4 categories)
 - Exercise-induced angina (Yes/No)
 
 **🩺 Clinical Measurements**
+
 - Resting blood pressure (80-250 mmHg)
 - Cholesterol level (100-600 mg/dl)
 - Maximum heart rate (50-250 bpm)
 
 **🔬 Laboratory Results**
+
 - Fasting blood sugar levels
 - ECG abnormalities
 - Additional cardiac parameters
@@ -119,16 +135,19 @@ The interface provides intuitive controls for:
 ### 📊 Results Dashboard
 
 **🎯 Risk Assessment**
+
 - **✅ LOW RISK**: 0-1 models detect disease (Green)
-- **⚡ MODERATE RISK**: 2 models detect disease (Orange) 
+- **⚡ MODERATE RISK**: 2 models detect disease (Orange)
 - **⚠️ HIGH RISK**: 3+ models detect disease (Red)
 
 **📈 Model Predictions**
+
 - Individual confidence scores for each algorithm
 - Comparative bar charts showing prediction consensus
 - Probability percentages for heart disease likelihood
 
 **💡 Medical Recommendations**
+
 - Personalized advice based on risk level
 - Healthcare consultation guidance
 - Lifestyle recommendations
@@ -206,12 +225,14 @@ The Gradio interface can be customized by editing the `create_interface()` funct
 ## 🔬 Research & Development
 
 ### 📈 Model Insights
+
 - **Logistic Regression**: Best for medical interpretability and balanced performance
 - **Random Forest**: Highest discrimination ability (ROC-AUC = 88%)
 - **Hyperparameter Tuning**: GridSearchCV optimization improved model robustness
 - **Feature Importance**: Age, chest pain type, and cholesterol are key predictors
 
 ### 🛠️ Technical Implementation
+
 - **Backend**: scikit-learn for ML, pandas for data processing
 - **Frontend**: Gradio for interactive web interface
 - **Deployment**: Local hosting with optional public sharing
@@ -220,6 +241,7 @@ The Gradio interface can be customized by editing the `create_interface()` funct
 ## 🤝 Contributing
 
 **🔧 Enhancement Ideas:**
+
 - Add feature importance visualizations
 - Implement additional ML models (XGBoost, Neural Networks)
 - Create mobile-responsive design
@@ -227,6 +249,7 @@ The Gradio interface can be customized by editing the `create_interface()` funct
 - Integrate with electronic health records (EHR)
 
 **📊 Research Extensions:**
+
 - Cross-validation analysis
 - External dataset validation
 - Explainable AI (SHAP values)
@@ -235,6 +258,7 @@ The Gradio interface can be customized by editing the `create_interface()` funct
 ## 🏥 Medical Disclaimer
 
 **⚠️ IMPORTANT**: This tool is for **educational and research purposes only**
+
 - Results should **never replace professional medical diagnosis**
 - Always consult qualified healthcare professionals for medical concerns
 - The models are trained on limited data and may not account for all factors
