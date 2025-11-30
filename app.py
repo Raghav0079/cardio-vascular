@@ -598,9 +598,9 @@ def predict_heart_disease(patient_name, age, sex, chest_pain_type, resting_bp, c
     
     plt.tight_layout()
     
-    # Store patient data for PDF generation
-    patient_data = {
-        'name': patient_name,
+    # Prepare report data for PDF generation (combine all data into report_data)
+    report_data = {
+        'patient_name': patient_name,
         'age': age,
         'sex': 'Male' if sex == 1 else 'Female',
         'chest_pain_type': ['Typical Angina', 'Atypical Angina', 'Non-anginal Pain', 'Asymptomatic'][chest_pain_type],
@@ -613,11 +613,35 @@ def predict_heart_disease(patient_name, age, sex, chest_pain_type, resting_bp, c
         'st_depression': st_depression,
         'slope': ['Upsloping', 'Flat', 'Downsloping'][slope],
         'colored_vessels': colored_vessels,
-        'thalassemia': ['Normal', 'Fixed Defect', 'Reversible Defect', 'Not Described'][thalassemia]
+        'thalassemia': ['Normal', 'Fixed Defect', 'Reversible Defect', 'Not Described'][thalassemia],
+        'timestamp': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'results': results,
+        'probabilities': probabilities,
+        'overall_result': overall_result,
+        'recommendation': recommendation,
+        'positive_predictions': positive_predictions,
+        'confidence_level': confidence_level
     }
     
+    # Prepare input data for clinical parameters section
+    input_data_for_pdf = pd.DataFrame({
+        'age': [age],
+        'sex': [sex],
+        'cp': [chest_pain_type],
+        'trestbps': [resting_bp],
+        'chol': [cholesterol],
+        'fbs': [fasting_blood_sugar],
+        'restecg': [rest_ecg],
+        'thalach': [max_heart_rate],
+        'exang': [exercise_angina],
+        'oldpeak': [st_depression],
+        'slope': [slope],
+        'ca': [colored_vessels],
+        'thal': [thalassemia]
+    })
+    
     # Generate PDF report
-    pdf_path = generate_pdf_report(patient_data, results, probabilities, overall_result, recommendation)
+    pdf_path = generate_pdf_report(report_data, input_data_for_pdf)
     
     return detailed_results, fig, pdf_path
 
