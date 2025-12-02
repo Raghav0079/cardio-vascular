@@ -25,9 +25,48 @@ from reportlab.graphics.charts.legends import Legend
 from io import BytesIO
 warnings.filterwarnings('ignore')
 
+# Load environment variables
+def load_env_vars():
+    """Load environment variables from .env file"""
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    if os.path.exists(env_path):
+        with open(env_path, 'r') as f:
+            for line in f:
+                if '=' in line and not line.startswith('#'):
+                    key, value = line.strip().split('=', 1)
+                    os.environ[key] = value
+
+# Load environment variables
+load_env_vars()
+
+# Optional WandB integration - gracefully handles missing package or API key
+try:
+    from wandb_integration import init_wandb_tracking, log_training_data, log_prediction_data, create_wandb_dashboard, finish_wandb_run
+    WANDB_AVAILABLE = True
+    print("📊 WandB integration available")
+except ImportError:
+    WANDB_AVAILABLE = False
+    print("ℹ️ WandB not available - continuing without tracking")
+    # Define dummy functions
+    def init_wandb_tracking(*args, **kwargs): return False
+    def log_training_data(*args, **kwargs): pass
+    def log_prediction_data(*args, **kwargs): pass 
+    def create_wandb_dashboard(*args, **kwargs): pass
+    def finish_wandb_run(*args, **kwargs): pass
+
 def load_and_prepare_models():
     """Load the dataset and train all models"""
     print("Loading cardiovascular disease prediction models...")
+    
+    # Initialize optional WandB tracking
+    wandb_initialized = False
+    if WANDB_AVAILABLE:
+        try:
+            wandb_initialized = init_wandb_tracking()
+            if wandb_initialized:
+                print("📊 WandB tracking initialized successfully")
+        except Exception as e:
+            print(f"⚠️ WandB tracking failed to initialize: {e}")
     
     # Create synthetic dataset for demo
     np.random.seed(42)
@@ -78,7 +117,31 @@ def load_and_prepare_models():
     models['Gradient Boosting'] = GradientBoostingClassifier(random_state=42)
     models['Gradient Boosting'].fit(X_train, y_train)
     
+    # Log model training to wandb
+    try:
+        if wandb.run is not None:
+            wandb.log({
+                "training/dataset_size": len(df),
+                "training/features": len(X.columns),
+                "training/models_trained": len(models),
+                "training/test_split": 0.2
+            })
+            # Log basic model info
+            for model_name in models.keys():
+                wandb.log({f"models/{model_name.lower().replace(' ', '_')}_trained": True})
+    except Exception as e:
+        print(f"WandB model logging failed: {e}")
+    
     print("Models loaded successfully!")
+    
+    # Log training data to WandB if available
+    if WANDB_AVAILABLE and wandb_initialized:
+        try:
+            log_training_data(models, df)
+            print("📈 Training data logged to WandB")
+        except Exception as e:
+            print(f"⚠️ WandB training logging failed: {e}")
+    
     return models, X.columns.tolist()
 
 # Load models and feature names
@@ -643,6 +706,26 @@ def predict_heart_disease(patient_name, age, sex, chest_pain_type, resting_bp, c
     # Generate PDF report
     pdf_path = generate_pdf_report(report_data, input_data_for_pdf)
     
+    # Log prediction to WandB if available
+    if WANDB_AVAILABLE:
+        try:
+            # Prepare patient data for WandB logging (anonymized)
+            patient_data_for_wandb = {
+                'age': age,
+                'sex': 'Male' if sex == 1 else 'Female',
+                'chest_pain_type': ['Typical Angina', 'Atypical Angina', 'Non-anginal Pain', 'Asymptomatic'][chest_pain_type],
+                'resting_bp': resting_bp,
+                'cholesterol': cholesterol,
+                'exercise_angina': 'Yes' if exercise_angina == 1 else 'No',
+                'fasting_blood_sugar': '> 120 mg/dL' if fasting_blood_sugar == 1 else 'No',
+                'max_heart_rate': max_heart_rate
+            }
+            
+            log_prediction_data(patient_data_for_wandb, report_data)
+            create_wandb_dashboard()
+        except Exception as e:
+            print(f"⚠️ WandB prediction logging failed: {e}")
+    
     return detailed_results, fig, pdf_path
 
 # Define the Gradio interface
@@ -741,7 +824,10 @@ def create_interface():
                     label="Patient Name",
                     placeholder="Enter patient's full name",
                     info="Patient's name for medical records",
-                    value="John Doe"
+                    value="",
+                    elem_id="patient_name_input",
+                    interactive=True,
+                    type="text"
                 )
                 
                 gr.HTML('<h4 style="color: #6c757d; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem; margin-top: 1.5rem;">👤 Demographics</h4>')
@@ -926,6 +1012,16 @@ def create_interface():
         # Professional Information Section
         gr.Markdown("## 🔬 Technical Information")
         
+        # Add optional WandB tracking info
+        if WANDB_AVAILABLE:
+            gr.HTML("""<div class="info-box">
+                <p style="margin: 0; color: #0c5460;">
+                    <strong>📊 Analytics Tracking:</strong> This system includes optional Weights & Biases (WandB) 
+                    integration for experiment tracking and analytics. When available, predictions and model 
+                    performance are logged for continuous improvement and analysis.
+                </p>
+            </div>""")
+        
         with gr.Row():
             with gr.Column():
                 gr.Markdown("""
@@ -966,11 +1062,23 @@ if __name__ == "__main__":
     print("CardioPredict Pro - Loading models...")
     demo = create_interface()
     print("System ready - launching interface...")
-    demo.launch(
-        share=False,  # Hugging Face handles sharing
-        inbrowser=False,  # Not needed on HF Spaces
-        server_name="0.0.0.0",  # Required for HF Spaces
-        server_port=7860,  # HF Spaces default port
-        show_error=True,  # Show detailed errors
-        quiet=False,  # Show startup logs
-    )
+    
+    try:
+        demo.launch(
+            share=False,  # Hugging Face handles sharing
+            inbrowser=False,  # Not needed on HF Spaces
+            server_name="0.0.0.0",  # Required for HF Spaces
+            server_port=7860,  # HF Spaces default port
+            show_error=True,  # Show detailed errors
+            quiet=False,  # Show startup logs
+        )
+    except KeyboardInterrupt:
+        print("🛑 Shutting down gracefully...")
+    finally:
+        # Clean up WandB session if available
+        if WANDB_AVAILABLE:
+            try:
+                finish_wandb_run()
+                print("📊 WandB session finished")
+            except Exception as e:
+                print(f"⚠️ WandB cleanup warning: {e}")
