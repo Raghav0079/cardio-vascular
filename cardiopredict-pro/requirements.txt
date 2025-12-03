@@ -1,0 +1,9 @@
+gradio
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+reportlab
+wandb
+requests

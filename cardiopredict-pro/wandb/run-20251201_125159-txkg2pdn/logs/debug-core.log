@@ -1,0 +1,17 @@
+{"time":"2025-12-01T12:51:59.6357402+05:30","level":"INFO","msg":"main: starting server","port-filename":"C:\\Users\\Raghav\\AppData\\Local\\Temp\\tmp9eo6kwcw\\port-21184.txt","pid":21184,"log-level":0,"disable-analytics":false,"shutdown-on-parent-exit":false,"enable-dcgm-profiling":false}
+{"time":"2025-12-01T12:51:59.6448977+05:30","level":"INFO","msg":"server: will exit if parent process dies","ppid":21184}
+{"time":"2025-12-01T12:51:59.6458975+05:30","level":"INFO","msg":"server: accepting connections","addr":{"Name":"C:\\Users\\Raghav\\AppData\\Local\\Temp\\wandb-21184-24396-683910576\\socket","Net":"unix"}}
+{"time":"2025-12-01T12:51:59.6458975+05:30","level":"INFO","msg":"server: accepting connections","addr":{"IP":"127.0.0.1","Port":64427,"Zone":""}}
+{"time":"2025-12-01T12:52:01.7577854+05:30","level":"INFO","msg":"connection: ManageConnectionData: new connection created","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:01.9713734+05:30","level":"INFO","msg":"handleInformInit: received","streamId":"txkg2pdn","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:04.7081905+05:30","level":"INFO","msg":"handleInformInit: stream started","streamId":"txkg2pdn","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:07.5278729+05:30","level":"INFO","msg":"handleInformTeardown: server teardown initiated","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:07.5278729+05:30","level":"INFO","msg":"connection: closing","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:07.5278729+05:30","level":"INFO","msg":"connection: closed successfully","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:07.5278729+05:30","level":"INFO","msg":"server is shutting down"}
+{"time":"2025-12-01T12:52:07.5290232+05:30","level":"INFO","msg":"server: listener closed","addr":{"Name":"C:\\Users\\Raghav\\AppData\\Local\\Temp\\wandb-21184-24396-683910576\\socket","Net":"unix"}}
+{"time":"2025-12-01T12:52:07.5290232+05:30","level":"INFO","msg":"server: listener closed","addr":{"IP":"127.0.0.1","Port":64427,"Zone":""}}
+{"time":"2025-12-01T12:52:08.1122319+05:30","level":"ERROR","msg":"processOutgoingData: flush error","error":"write tcp 127.0.0.1:64427->127.0.0.1:64429: use of closed network connection","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:11.0774494+05:30","level":"INFO","msg":"handleInformTeardown: server shutdown complete","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:11.0774494+05:30","level":"INFO","msg":"connection: ManageConnectionData: connection closed","id":"1(127.0.0.1:64429)"}
+{"time":"2025-12-01T12:52:11.0774494+05:30","level":"INFO","msg":"server is closed"}

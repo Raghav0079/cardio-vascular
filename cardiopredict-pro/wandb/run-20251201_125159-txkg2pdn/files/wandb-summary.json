@@ -1,0 +1,1 @@
+{"_timestamp":1.7645737275181432e+09,"_runtime":1,"setup/interface_ready":true,"setup/ensemble_ready":true,"setup/initialization_time":1.764573727518084e+09,"_wandb":{"runtime":1},"setup/project_initialized":true,"setup/features_count":13,"setup/pdf_generation":true,"_step":0,"setup/version":"2.0","setup/models_count":4,"setup/deployment_target":"huggingface_spaces"}

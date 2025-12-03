@@ -1,0 +1,28 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "CPython 3.13.5",
+  "startedAt": "2025-12-01T07:21:59.093589Z",
+  "program": "C:\\Users\\Raghav\\OneDrive\\Desktop\\project\\cardio_interface\\cardiopredict-pro\\init_wandb.py",
+  "codePath": "init_wandb.py",
+  "codePathLocal": "init_wandb.py",
+  "git": {
+    "remote": "https://Raghav81:@huggingface.co/spaces/Raghav81/cardiopredict-pro",
+    "commit": "a87be9d7009b5bc6055433dc5252420324ab818e"
+  },
+  "email": "raghav051006@gmail.com",
+  "root": "C:\\Users\\Raghav\\OneDrive\\Desktop\\project\\cardio_interface\\cardiopredict-pro",
+  "host": "LAPTOP-TN1GUS6U",
+  "executable": "C:\\Python313\\python.exe",
+  "cpu_count": 10,
+  "cpu_count_logical": 12,
+  "disk": {
+    "/": {
+      "total": "510855737344",
+      "used": "210081206272"
+    }
+  },
+  "memory": {
+    "total": "16806326272"
+  },
+  "writerId": "x9ygddq207kinqjds11c6s0qyn2s46dm"
+}

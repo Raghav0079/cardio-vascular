@@ -1,0 +1,127 @@
+_wandb:
+    value:
+        cli_version: 0.21.4
+        e:
+            x9ygddq207kinqjds11c6s0qyn2s46dm:
+                codePath: init_wandb.py
+                codePathLocal: init_wandb.py
+                cpu_count: 10
+                cpu_count_logical: 12
+                disk:
+                    /:
+                        total: "510855737344"
+                        used: "210081206272"
+                email: raghav051006@gmail.com
+                executable: C:\Python313\python.exe
+                git:
+                    commit: a87be9d7009b5bc6055433dc5252420324ab818e
+                    remote: https://Raghav81:@huggingface.co/spaces/Raghav81/cardiopredict-pro
+                host: LAPTOP-TN1GUS6U
+                memory:
+                    total: "16806326272"
+                os: Windows-11-10.0.26200-SP0
+                program: C:\Users\Raghav\OneDrive\Desktop\project\cardio_interface\cardiopredict-pro\init_wandb.py
+                python: CPython 3.13.5
+                root: C:\Users\Raghav\OneDrive\Desktop\project\cardio_interface\cardiopredict-pro
+                startedAt: "2025-12-01T07:21:59.093589Z"
+                writerId: x9ygddq207kinqjds11c6s0qyn2s46dm
+        m: []
+        python_version: 3.13.5
+        t:
+            "1":
+                - 105
+            "2":
+                - 105
+            "3":
+                - 13
+                - 15
+                - 16
+            "4": 3.13.5
+            "5": 0.21.4
+            "8":
+                - 3
+            "12": 0.21.4
+            "13": windows-amd64
+data_pipeline:
+    value:
+        feature_engineering: domain_specific
+        preprocessing: standard_scaling
+        split_ratio: 0.2
+        validation: train_test_split
+deployment:
+    value:
+        accessibility: web_interface
+        hosting: cloud_based
+        interface: gradio_v4
+        platform: huggingface_spaces
+description:
+    value: AI-powered cardiovascular risk assessment with ensemble modeling
+ensemble:
+    value:
+        confidence_calculation: probability_based
+        consensus_levels:
+            - low
+            - moderate
+            - high
+        method: majority_voting
+        threshold: 0.5
+features:
+    value:
+        demographics:
+            - age
+            - sex
+        diagnostics:
+            - colored_vessels
+            - thalassemia
+        lab_results:
+            - cholesterol
+            - fasting_blood_sugar
+            - rest_ecg
+        stress_test:
+            - st_depression
+            - slope
+        symptoms:
+            - chest_pain_type
+            - exercise_angina
+        vitals:
+            - resting_bp
+            - max_heart_rate
+framework:
+    value: scikit-learn
+interface:
+    value: gradio
+medical_compliance:
+    value:
+        accuracy: research_grade
+        disclaimer: educational_only
+        privacy: anonymized_logging
+        validation: statistical_methods
+models:
+    value:
+        gradient_boosting:
+            interpretability: medium
+            purpose: Sequential learning with boosting
+            type: GradientBoostingClassifier
+        logistic_regression:
+            interpretability: high
+            purpose: Linear probabilistic modeling
+            type: LogisticRegression
+        random_forest:
+            interpretability: medium
+            purpose: Ensemble decision trees
+            type: RandomForestClassifier
+        svm:
+            interpretability: low
+            purpose: Non-linear classification with RBF kernel
+            type: SVC
+output_format:
+    value:
+        confidence: ensemble_based
+        prediction: binary_classification
+        probabilities: per_model
+        report: professional_pdf
+        visualization: interactive_plots
+project_name:
+    value: CardioPredict Pro
+version:
+    value: "2.0"
