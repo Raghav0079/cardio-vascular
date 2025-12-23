@@ -5,10 +5,15 @@
 [![Gradio](https://img.shields.io/badge/Built%20with-Gradio-orange)](https://gradio.app/)
 [![Sklearn](https://img.shields.io/badge/ML-Scikit--Learn-blue)](https://scikit-learn.org/)
 [![Hugging Face](https://img.shields.io/badge/🤗-Hugging%20Face-yellow)](https://huggingface.co/)
+[![Live Demo](https://img.shields.io/badge/Spaces-Live%20Demo-yellow?logo=huggingface)](https://huggingface.co/spaces/Raghav81/cardiopredict-pro)
 
 > **Advanced AI-Powered Cardiovascular Risk Assessment System**
 
 CardioPredict Pro is a comprehensive machine learning application that provides intelligent cardiovascular risk assessment using multiple advanced algorithms. Built with a professional medical interface, it offers detailed risk analysis, PDF report generation, and optional database integration for clinical environments.
+
+## 🌐 Live Demo
+
+Open the app on Hugging Face Spaces: https://huggingface.co/spaces/Raghav81/cardiopredict-pro
 
 ## 🌟 Key Features
 
@@ -143,7 +148,7 @@ cardiopredict-pro/
     ├── database_schema.sql       # Database structure
     └── .env.example              # Environment variables template
 ```
-https://huggingface.co/spaces/Raghav81/cardiopredict-pro
+
 ## 🛠️ Technical Architecture
 
 ### Machine Learning Pipeline

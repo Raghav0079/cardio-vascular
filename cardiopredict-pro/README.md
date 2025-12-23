@@ -14,6 +14,10 @@ license: mit
 
 AI-Powered Cardiovascular Risk Assessment using multiple machine learning models.
 
+## Live Demo
+
+Run it on Hugging Face Spaces: https://huggingface.co/spaces/Raghav81/cardiopredict-pro
+
 ## Features
 - 🤖 **Multi-model ensemble** (Logistic Regression, Random Forest, SVM, Gradient Boosting)
 - 👤 **Patient Registration** with personalized medical reports
