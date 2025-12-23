@@ -143,7 +143,7 @@ cardiopredict-pro/
     ├── database_schema.sql       # Database structure
     └── .env.example              # Environment variables template
 ```
-
+https://huggingface.co/spaces/Raghav81/cardiopredict-pro
 ## 🛠️ Technical Architecture
 
 ### Machine Learning Pipeline
