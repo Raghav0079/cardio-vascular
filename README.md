@@ -13,7 +13,15 @@ CardioPredict Pro is a comprehensive machine learning application that provides 
 
 ## 🌐 Live Demo
 
-Open the app on Hugging Face Spaces: https://huggingface.co/spaces/Raghav81/cardiopredict-pro
+<div align="center">
+
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-xl-dark.svg)](https://huggingface.co/spaces/Raghav81/cardiopredict-pro)
+
+**Try CardioPredict Pro live on Hugging Face Spaces!**
+
+*Professional cardiovascular risk assessment powered by AI - no installation required*
+
+</div>
 
 ## 🌟 Key Features
 
@@ -192,6 +200,14 @@ python app.py
 ```
 
 ### 2. Hugging Face Spaces (Recommended)
+
+<div align="center">
+
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-xl.svg)](https://huggingface.co/spaces/Raghav81/cardiopredict-pro)
+
+*Live demo available now!*
+
+</div>
 
 **Automatic Deployment:**
 1. Fork this repository
