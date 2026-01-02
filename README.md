@@ -135,7 +135,8 @@ cardiopredict-pro/
 │
 ├── 📁 Enhanced Features
 │   ├── database_integration.py    # Supabase PostgreSQL integration
-│   └── wandb_integration.py      # WandB experiment tracking
+│   ├── wandb_integration.py      # WandB experiment tracking
+│   └── test_logging.py           # Database logging testing utilities
 │
 ├── 📁 Advanced Version (cardiopredict-pro/)
 │   ├── app.py                     # Enhanced version with full features
@@ -149,12 +150,23 @@ cardiopredict-pro/
 │   ├── README.md                  # This comprehensive guide
 │   ├── HUGGINGFACE_DEPLOYMENT.md # Deployment instructions
 │   ├── SUPABASE_SETUP.md         # Database setup guide
-│   └── WANDB_README.md           # Analytics setup guide
+│   ├── WANDB_README.md           # Analytics setup guide
+│   ├── CONTRIBUTING.md           # Contribution guidelines and setup
+│   └── SECURITY.md               # Security policy and best practices
+│
+├── 📁 GitHub Templates
+│   └── .github/
+│       ├── ISSUE_TEMPLATE/
+│       │   ├── bug_report.yml     # Structured bug report template
+│       │   ├── feature_request.yml # Feature request template
+│       │   └── medical_question.yml # Medical/clinical inquiry template
+│       └── pull_request_template.md # PR template for contributions
 │
 └── 📁 Configuration
     ├── requirements.txt           # Production dependencies
     ├── database_schema.sql       # Database structure
-    └── .env.example              # Environment variables template
+    ├── .env.example              # Environment variables template
+    └── .gitignore                # Git ignore patterns
 ```
 
 ## 🛠️ Technical Architecture
@@ -242,15 +254,52 @@ CMD ["python", "app.py"]
 - **Azure**: Container Instances or Web Apps
 - **Heroku**: Direct git deployment
 
+## 🧪 Testing & Debugging
+
+### Database Testing
+```bash
+# Test database connectivity and logging
+python test_logging.py
+
+# Verify database setup
+python test_db.py
+
+# View stored predictions
+python view_database.py
+```
+
+### Debug Mode
+```bash
+# Run with verbose logging
+DEBUG=1 python app.py
+
+# Test specific features
+python -m pytest tests/ -v  # If test suite available
+```
+
 ## 🔧 Configuration & Customization
 
 ### Environment Variables
+
+Use the provided [.env.example](.env.example) template to configure optional features:
+
 ```bash
-# Create .env file for optional features
+# Copy the template
+cp .env.example .env
+
+# Edit with your actual values
+# Database Integration (Optional)
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_anon_key
+
+# Analytics Tracking (Optional) 
 WANDB_API_KEY=your_wandb_api_key
 WANDB_PROJECT=cardiopredict-pro
+
+# Email Notifications (Optional)
+SMTP_SERVER=your_smtp_server
+SMTP_EMAIL=your_email
+SMTP_PASSWORD=your_password
 ```
 
 ### Model Customization
@@ -300,7 +349,14 @@ demo = gr.Blocks(
 
 ## 🤝 Contributing
 
-We welcome contributions to improve CardioPredict Pro!
+We welcome contributions to improve CardioPredict Pro! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) guide for detailed instructions.
+
+### Quick Start for Contributors
+
+**Before you start:**
+- Review our [Security Policy](SECURITY.md) for security guidelines
+- Use our GitHub issue templates for bug reports and feature requests
+- Follow the pull request template for structured contributions
 
 ### Development Setup
 ```bash
@@ -332,7 +388,14 @@ git push origin feature/your-improvement
 - 📊 **Analytics**: Improve reporting and visualization features
 - 🔒 **Security**: Strengthen data protection and compliance
 - 📚 **Documentation**: Improve guides and examples
-- 🧪 **Testing**: Add comprehensive test coverage
+- 🧪 **Testing**: Add comprehensive test coverage and debugging tools
+- 🏥 **Medical Compliance**: Help improve medical disclaimers and safety features
+
+### GitHub Issue Templates
+We provide structured templates to help you:
+- **[Bug Reports](.github/ISSUE_TEMPLATE/bug_report.yml)**: Report technical issues
+- **[Feature Requests](.github/ISSUE_TEMPLATE/feature_request.yml)**: Suggest new features
+- **[Medical Questions](.github/ISSUE_TEMPLATE/medical_question.yml)**: Clinical/medical inquiries
 
 ## 📚 Documentation
 
@@ -340,7 +403,10 @@ git push origin feature/your-improvement
 - **[Deployment Guide](HUGGINGFACE_DEPLOYMENT.md)**: Detailed deployment instructions
 - **[Database Setup](cardiopredict-pro/SUPABASE_SETUP.md)**: PostgreSQL integration guide
 - **[Analytics Guide](cardiopredict-pro/WANDB_README.md)**: WandB experiment tracking
-- **[API Documentation](docs/api.md)**: Integration endpoints (if applicable)
+- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute to the project
+- **[Security Policy](SECURITY.md)**: Security best practices and reporting
+- **[Environment Setup](.env.example)**: Configuration template for optional features
+- **[GitHub Templates](.github/)**: Issue and PR templates for structured contributions
 
 ### Medical References
 - **[Cleveland Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/heart+disease)**
